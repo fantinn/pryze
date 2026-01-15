@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PryzeGear | High-End Setups & Hardware</title>
+    <meta
+      name="description"
+      content="Curadoria exclusiva de hardware e periféricos high-end. Entre para o grupo vip."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              display: ["Space Grotesk", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                purple: "#7c3aed",
+                dark: "#050505",
+                accent: "#a78bfa",
+                glow: "#8b5cf6",
+              },
+            },
+            backgroundImage: {
+              "hero-glow":
+                "radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(5, 5, 5, 0) 50%)",
+              "card-gradient":
+                "linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)",
+              "grid-pattern": `linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                                         linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px)`,
+            },
+            backgroundSize: {
+              grid: "40px 40px",
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              "float-delayed": "float 7s ease-in-out 2s infinite",
+              "pulse-glow": "pulse-glow 3s infinite",
+              shimmer: "shimmer 2.5s infinite",
+              marquee: "marquee 25s linear infinite",
+              blob: "blob 7s infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+              "pulse-glow": {
+                "0%, 100%": { boxShadow: "0 0 20px rgba(124, 58, 237, 0.3)" },
+                "50%": { boxShadow: "0 0 40px rgba(124, 58, 237, 0.6)" },
+              },
+              shimmer: {
+                "100%": { transform: "translateX(100%)" },
+              },
+              marquee: {
+                "0%": { transform: "translateX(0%)" },
+                "100%": { transform: "translateX(-100%)" },
+              },
+              blob: {
+                "0%": { transform: "translate(0px, 0px) scale(1)" },
+                "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                "100%": { transform: "translate(0px, 0px) scale(1)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #050505;
+        color: #e5e5e5;
+        overflow-x: hidden;
+        cursor: default;
+      }
+
+      .bg-grid {
+        mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          black 40%,
+          transparent 100%
+        );
+      }
+
+      #spotlight {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        background: radial-gradient(
+          600px circle at var(--mouse-x) var(--mouse-y),
+          rgba(124, 58, 237, 0.07),
+          transparent 40%
+        );
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0a0a0a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #7c3aed;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+        transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .delay-100 {
+        transition-delay: 100ms;
+      }
+      .delay-200 {
+        transition-delay: 200ms;
+      }
+      .delay-300 {
+        transition-delay: 300ms;
+      }
+      .delay-400 {
+        transition-delay: 400ms;
+      }
+
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .holo-card {
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .holo-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transition: 0.5s;
+      }
+      .holo-card:hover::before {
+        left: 100%;
+      }
+      .holo-card:hover {
+        box-shadow: 0 0 30px rgba(124, 58, 237, 0.2);
+        border-color: rgba(124, 58, 237, 0.5);
+        transform: translateY(-5px);
+      }
+
+      .text-gradient {
+        background: linear-gradient(to right, #fff, #a78bfa, #fff);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textShine 4s linear infinite;
+      }
+
+      .text-glow {
+        text-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
+      }
+
+      .maglev-spin {
+        animation: spin-flow 4s linear infinite;
+        mask-image: linear-gradient(white, white);
+        -webkit-mask-image: linear-gradient(white, white);
+      }
+
+      .group:hover .maglev-spin {
+        animation: spin-flow 1.5s linear infinite;
+      }
+
+      .maglev-float {
+        animation: magnet-float 3s ease-in-out infinite;
+      }
+
+      @keyframes spin-flow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes magnet-float {
+        0%,
+        100% {
+          transform: translateY(-3px);
+        }
+        50% {
+          transform: translateY(3px);
+        }
+      }
+
+      @keyframes textShine {
+        to {
+          background-position: 200% center;
+        }
+      }
+
+      .btn-shimmer {
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-shimmer::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          transparent 0%,
+          rgba(255, 255, 255, 0.4) 50%,
+          transparent 100%
+        );
+        transform: skewX(-20deg) translateX(-150%);
+        animation: shimmer 3s infinite;
+      }
+
+      .draggable-logo {
+        touch-action: none;
+        user-select: none;
+      }
+
+      #marquee {
+        transition: animation-play-state 0.2s ease;
+      }
+
+      #marquee.paused {
+        animation-play-state: paused;
+      }
+
+      #logos-container {
+        scroll-behavior: smooth;
+      }
+
+      #logos-container::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      #logos-container::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      #logos-container::-webkit-scrollbar-thumb {
+        background: rgba(124, 58, 237, 0.5);
+        border-radius: 2px;
+      }
+
+      #logos-container::-webkit-scrollbar-thumb:hover {
+        background: rgba(124, 58, 237, 0.8);
+      }
+
+      .draggable-logo {
+        touch-action: none;
+        user-select: none;
+      }
+
+      .draggable-logo.dragging {
+        opacity: 0.7 !important;
+        filter: brightness(1.2);
+      }
+
+      #logos-container {
+        position: relative;
+      }
+
+      #logos-container.dragging-active {
+        overflow-x: visible;
+      }
+
+      #marquee.paused {
+        animation-play-state: paused;
+      }
+    </style>
+  </head>
+  <body
+    class="antialiased selection:bg-brand-purple selection:text-white relative"
+  >
+    <div
+      class="fixed inset-0 bg-grid-pattern bg-grid pointer-events-none z-0 opacity-40"
+    ></div>
+
+    <div id="spotlight"></div>
+
+    <nav
+      class="fixed w-full z-50 transition-all duration-300 border-b-0"
+      id="navbar"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between relative"
+      >
+        <div
+          class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400"
+        >
+          <a
+            href="#sobre"
+            class="hover:text-white hover:text-glow transition-all duration-300"
+            >Conceito</a
+          >
+          <a
+            href="#levels"
+            class="hover:text-white hover:text-glow transition-all duration-300"
+            >Setups</a
+          >
+        </div>
+
+        <div
+          class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
+        >
+          <a href="#" class="group relative block w-20 h-20">
+            <div
+              class="absolute inset-0 bg-brand-purple/20 rounded-full blur-md group-hover:bg-brand-purple/40 group-hover:blur-xl transition-all duration-500"
+            ></div>
+
+            <div
+              class="absolute inset-0 rounded-full overflow-hidden p-[2px] maglev-spin"
+            >
+              <div
+                class="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[conic-gradient(transparent_0deg,#7c3aed_180deg,transparent_360deg)]"
+              ></div>
+            </div>
+
+            <div
+              class="absolute inset-[2px] bg-brand-dark rounded-full z-10"
+            ></div>
+
+            <div
+              class="absolute inset-0 flex items-center justify-center z-20 maglev-float"
+            >
+              <img
+                src="logo.png"
+                alt="PryzeGear Logo"
+                class="h-15 w-15 object-contain rounded-full border-100 border-none"
+              />
+            </div>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center gap-6">
+          <a
+            href="#reviews"
+            class="text-sm font-medium text-gray-400 hover:text-white hover:text-glow transition-all duration-300"
+            >Comunidade</a
+          >
+
+          <a
+            href="https://chat.whatsapp.com/LZBM0tAQsGFJluDFlikZLy"
+            target="_blank"
+            class="flex items-center gap-2 bg-white/5 hover:bg-brand-purple border border-white/10 hover:border-brand-purple/50 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 group hover:shadow-[0_0_20px_rgba(124,58,237,0.6)]"
+          >
+            <span>Grupo VIP</span>
+            <i
+              class="fa-brands fa-whatsapp group-hover:text-white transition-colors"
+            ></i>
+          </a>
+        </div>
+
+        <button
+          class="md:hidden text-white text-xl ml-auto"
+          onclick="toggleMobileMenu()"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-brand-dark/95 backdrop-blur-xl z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center gap-8 md:hidden"
+    >
+      <button
+        class="absolute top-6 right-6 text-white text-2xl"
+        onclick="toggleMobileMenu()"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <a
+        href="#sobre"
+        class="text-2xl font-display text-white text-glow"
+        onclick="toggleMobileMenu()"
+        >Conceito</a
+      >
+      <a
+        href="#levels"
+        class="text-2xl font-display text-white text-glow"
+        onclick="toggleMobileMenu()"
+        >Setups</a
+      >
+      <a
+        href="https://chat.whatsapp.com/LZBM0tAQsGFJluDFlikZLy"
+        class="text-brand-purple text-xl font-bold flex items-center gap-2"
+      >
+        Entrar no Grupo <i class="fa-brands fa-whatsapp"></i>
+      </a>
+    </div>
+
+    <section
+      class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden z-10"
+    >
+      <div
+        class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"
+      ></div>
+      <div
+        class="absolute top-0 -right-4 w-72 h-72 bg-violet-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"
+      ></div>
+      <div
+        class="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-4000"
+      ></div>
+
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10"
+      >
+        <div class="text-center lg:text-left z-20">
+          <div class="reveal">
+            <div
+              class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-brand-purple/10 border border-brand-purple/20 text-brand-purple text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-8 hover:bg-brand-purple/20 transition-colors cursor-default"
+            >
+              <span class="relative flex h-1.5 w-1.5">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-purple opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-purple"
+                ></span>
+              </span>
+              Periféricos high-end
+            </div>
+
+            <h1
+              class="text-5xl md:text-7xl lg:text-[5.5rem] font-display font-bold leading-[0.9] -tracking-[0.04em] mb-10 drop-shadow-2xl text-white text-glow"
+            >
+              O setup dos seus <br />
+              <span class="text-gradient">sonhos existe.</span>
+            </h1>
+            <div
+              class="flex flex-col md:flex-row items-center gap-8 justify-center lg:justify-start"
+            >
+              <a
+                href="https://chat.whatsapp.com/LZBM0tAQsGFJluDFlikZLy"
+                target="_blank"
+                class="btn-shimmer inline-flex items-center gap-3 bg-brand-purple hover:bg-violet-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(124,58,237,0.5)] group relative z-20"
+              >
+                ENTRAR NO GRUPO VIP
+                <i
+                  class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"
+                ></i>
+              </a>
+
+              <div class="flex items-center gap-4 text-sm text-gray-500">
+                <div class="flex -space-x-3">
+                  <div
+                    class="w-9 h-9 rounded-full bg-gray-700 border-2 border-brand-dark animate-bounce"
+                    style="animation-delay: 0ms"
+                  ></div>
+                  <div
+                    class="w-9 h-9 rounded-full bg-gray-600 border-2 border-brand-dark animate-bounce"
+                    style="animation-delay: 100ms"
+                  ></div>
+                  <div
+                    class="w-9 h-9 rounded-full bg-gray-500 border-2 border-brand-dark flex items-center justify-center text-xs text-white font-bold animate-bounce"
+                    style="animation-delay: 200ms"
+                  >
+                    +2k
+                  </div>
+                </div>
+                <p
+                  class="font-medium text-xs tracking-wide uppercase opacity-70"
+                >
+                  Membros Ativos
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative lg:h-[600px] flex items-center justify-center reveal delay-200"
+        >
+          <div
+            class="relative w-full aspect-square md:aspect-auto md:h-[550px] rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(124,58,237,0.15)] animate-float group z-10"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-60 z-10"
+            ></div>
+
+            <video
+              class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              autoplay
+              loop
+              muted
+              playsinline
+              poster=""
+            >
+              <source src="video.mp4" type="video/mp4" />
+              Seu navegador não suporta a tag de vídeo.
+            </video>
+
+            <div
+              class="absolute bottom-8 left-8 right-8 z-20 glass-panel p-4 rounded-xl flex items-center gap-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 border border-brand-purple/30"
+            >
+              <div
+                class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-black shadow-[0_0_15px_rgba(34,197,94,0.6)]"
+              >
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div>
+                <p class="text-white font-bold text-sm">Disponível no Grupo</p>
+                <p class="text-gray-400 text-xs">Oferta exclusiva PryzeGear</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute -right-10 top-20 w-24 h-24 border border-brand-purple/30 rounded-full animate-float-delayed z-0 opacity-50"
+          ></div>
+          <div
+            class="absolute -left-5 bottom-40 w-16 h-16 border-2 border-white/10 rotate-45 animate-spin-slow z-0 opacity-50"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="border-y border-white/5 bg-black/60 backdrop-blur-sm py-10 overflow-hidden relative z-20"
+    >
+      <div
+        class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-brand-dark to-transparent z-10"
+      ></div>
+      <div
+        class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-brand-dark to-transparent z-10"
+      ></div>
+
+      <div class="flex whitespace-nowrap overflow-hidden" id="logos-container">
+        <div class="flex animate-marquee gap-24 items-center min-w-full px-10" id="marquee">
+          <img
+            src="IMG_3904.PNG"
+            alt="Wooting"
+            class="h-32 w-auto opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 draggable-logo cursor-grab active:cursor-grabbing"
+            draggable="true"
+          />
+          <img
+            src="IMG_3908.PNG"
+            alt="Pulsar"
+            class="h-32 w-auto opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 draggable-logo cursor-grab active:cursor-grabbing"
+            draggable="true"
+          />
+          <img
+            src="IMG_3912.PNG"
+            alt="Lamzu"
+            class="h-32 w-auto opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 draggable-logo cursor-grab active:cursor-grabbing"
+            draggable="true"
+          />
+          <img
+            src="IMG_3915.PNG"
+            alt="Artisan"
+            class="h-32 w-auto opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 draggable-logo cursor-grab active:cursor-grabbing"
+            draggable="true"
+          />
+
+          <img
+            src="IMG_3904.PNG"
+            alt="Wooting"
+            class="h-32 w-auto opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 draggable-logo cursor-grab active:cursor-grabbing"
+            draggable="true"
+          />
+          <img
+            src="IMG_3908.PNG"
+            alt="Pulsar"
+            class="h-32 w-auto opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 draggable-logo cursor-grab active:cursor-grabbing"
+            draggable="true"
+          />
+          <img
+            src="IMG_3912.PNG"
+            alt="Lamzu"
+            class="h-32 w-auto opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 draggable-logo cursor-grab active:cursor-grabbing"
+            draggable="true"
+          />
+          <img
+            src="IMG_3915.PNG"
+            alt="Artisan"
+            class="h-32 w-auto opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 draggable-logo cursor-grab active:cursor-grabbing"
+            draggable="true"
+          />
+
+          <img
+            src="IMG_3904.PNG"
+            alt="Wooting"
+            class="h-32 w-auto opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 draggable-logo cursor-grab active:cursor-grabbing"
+            draggable="true"
+          />
+          <img
+            src="IMG_3908.PNG"
+            alt="Pulsar"
+            class="h-32 w-auto opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 draggable-logo cursor-grab active:cursor-grabbing"
+            draggable="true"
+          />
+          <img
+            src="IMG_3912.PNG"
+            alt="Lamzu"
+            class="h-32 w-auto opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 draggable-logo cursor-grab active:cursor-grabbing"
+            draggable="true"
+          />
+          <img
+            src="IMG_3915.PNG"
+            alt="Artisan"
+            class="h-32 w-auto opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 draggable-logo cursor-grab active:cursor-grabbing"
+            draggable="true"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="py-24 relative overflow-hidden z-10">
+      <div
+        class="absolute right-0 top-1/2 w-96 h-96 bg-brand-purple/10 rounded-full blur-[100px] pointer-events-none"
+      ></div>
+
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10"
+      >
+        <div class="md:col-span-5 reveal">
+          <div
+            class="relative rounded-2xl overflow-hidden aspect-[4/5] group hover:shadow-[0_0_40px_rgba(124,58,237,0.2)] transition-all duration-500"
+          >
+            <img
+              src="IMG.jpg"
+              alt="Detalhe Hardware"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-brand-purple/20 mix-blend-overlay group-hover:bg-brand-purple/0 transition-colors duration-500"
+            ></div>
+          </div>
+        </div>
+        <div class="md:col-span-7 space-y-8 reveal delay-100">
+          <h2 class="text-4xl md:text-5xl font-display font-bold text-glow">
+            Não é apenas hardware. <br />
+            É a <span class="text-brand-purple italic">alma</span> do seu
+            espaço.
+          </h2>
+          <p
+            class="text-gray-400 text-lg leading-relaxed border-l border-brand-purple/30 pl-6"
+          >
+            Na PryzeGear, entendemos que um setup vai muito além de
+            especificações técnicas. É sobre como você se sente ao sentar na
+            frente do computador.
+          </p>
+
+          <div class="grid grid-cols-2 gap-6 mt-8">
+            <div
+              class="bg-white/5 p-4 rounded-xl border border-white/5 hover:border-brand-purple/50 transition-colors"
+            >
+              <i class="fa-solid fa-filter text-brand-purple text-2xl mb-2"></i>
+              <h4 class="text-white font-bold text-xl text-glow">Curadoria</h4>
+              <p class="text-sm text-gray-500 mt-1">
+                Seleção manual das melhores oportunidades.
+              </p>
+            </div>
+            <div
+              class="bg-white/5 p-4 rounded-xl border border-white/5 hover:border-brand-purple/50 transition-colors"
+            >
+              <i class="fa-solid fa-award text-brand-purple text-2xl mb-2"></i>
+              <h4 class="text-white font-bold text-xl text-glow">Autoridade</h4>
+              <p class="text-sm text-gray-500 mt-1">
+                Análises técnicas reais, sem "hype" vazio.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="levels"
+      class="py-24 bg-gradient-to-b from-transparent to-white/[0.02] z-10 relative"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+          <h2
+            class="text-3xl md:text-5xl font-display font-bold mb-4 text-glow"
+          >
+            Escolha o seu Nível
+          </h2>
+          <p class="text-gray-400">
+            Independente do orçamento, a qualidade é inegociável. Veja o que
+            aparece em nossos grupos.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="holo-card bg-card-gradient border border-white/5 p-8 rounded-3xl reveal delay-100 group"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-white mb-6 group-hover:bg-brand-purple group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg"
+            >
+              <i class="fa-solid fa-gamepad text-2xl"></i>
+            </div>
+            <h3
+              class="text-2xl font-display font-bold mb-2 group-hover:text-brand-purple transition-colors text-glow"
+            >
+              Setup Normal
+            </h3>
+            <p class="text-gray-500 text-sm mb-6">
+              A porta de entrada para o mundo premium. Custo-benefício sem abrir
+              mão da estética.
+            </p>
+            <ul class="space-y-3 text-sm text-gray-300">
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-brand-purple"></i> Perifericos
+                custo benefícios
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-brand-purple"></i> Para quem
+                joga Casualmente
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-brand-purple"></i>Entrada para
+                o mundo Pro
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="holo-card bg-brand-dark border border-brand-purple p-8 rounded-3xl relative transform md:-translate-y-4 shadow-[0_0_40px_rgba(124,58,237,0.15)] reveal delay-200 z-10 group"
+          >
+            <div
+              class="absolute top-0 right-0 bg-brand-purple text-white text-xs font-bold px-4 py-2 rounded-bl-xl rounded-tr-2xl shadow-lg"
+            >
+              POPULAR
+            </div>
+            <div
+              class="w-14 h-14 rounded-2xl bg-brand-purple flex items-center justify-center text-white mb-6 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300 shadow-[0_0_20px_rgba(124,58,237,0.5)]"
+            >
+              <i class="fa-solid fa-bolt text-2xl"></i>
+            </div>
+            <h3
+              class="text-2xl font-display font-bold mb-2 text-white group-hover:text-brand-accent transition-colors text-glow"
+            >
+              Setup Pro
+            </h3>
+            <p class="text-gray-400 text-sm mb-6">
+              Performance competitiva. Para quem joga para ganhar e trabalha com
+              render.
+            </p>
+            <ul class="space-y-3 text-sm text-gray-200">
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-brand-purple"></i> Perifericos
+                + Competitivos
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-brand-purple"></i> Quem busca
+                performance
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-brand-purple"></i> Entrada para
+                o Mundo High-End
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="holo-card bg-card-gradient border border-white/5 p-8 rounded-3xl reveal delay-300 group"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-white mb-6 group-hover:bg-brand-purple group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg"
+            >
+              <i class="fa-solid fa-crown text-2xl"></i>
+            </div>
+            <h3
+              class="text-2xl font-display font-bold mb-2 group-hover:text-brand-purple transition-colors text-glow"
+            >
+              Setup High-End
+            </h3>
+            <p class="text-gray-500 text-sm mb-6">
+              O topo da cadeia alimentar. Exclusividade, peças limitadas e poder
+              bruto.
+            </p>
+            <ul class="space-y-3 text-sm text-gray-300">
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-brand-purple"></i>Elite dos
+                Perifericos
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-brand-purple"></i>Quem busca
+                Alta Performance
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-brand-purple"></i>Nivel
+                competitivo Superior
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="py-24 overflow-hidden relative z-10">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <h2
+          class="text-center text-3xl font-display font-bold mb-12 reveal text-glow"
+        >
+          A Comunidade <span class="text-brand-purple">Pryze</span>
+        </h2>
+
+        <div class="flex justify-center reveal delay-100">
+          <img
+            src="clientes.JPG"
+            alt="Clientes"
+            class="w-full md:max-w-4xl rounded-2xl border border-white/10 shadow-[0_0_50px_rgba(124,58,237,0.15)] hover:shadow-[0_0_80px_rgba(124,58,237,0.3)] transition-all duration-500 object-cover"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 relative overflow-hidden z-10">
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-brand-purple/20 to-transparent blur-3xl pointer-events-none"
+      ></div>
+      <div
+        class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-brand-purple/30 rounded-full blur-[100px] pointer-events-none animate-pulse-glow"
+      ></div>
+
+      <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <h2
+          class="text-4xl md:text-6xl font-display font-bold mb-8 reveal drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] text-glow"
+        >
+          Pronto para o <br />próximo nível?
+        </h2>
+        <p
+          class="text-gray-300 text-lg mb-12 reveal delay-100 max-w-xl mx-auto"
+        >
+          Não perca tempo procurando em sites aleatórios. As melhores
+          oportunidades do mercado high-end chegam primeiro no nosso grupo.
+        </p>
+        <div class="reveal delay-200">
+          <a
+            href="https://chat.whatsapp.com/LZBM0tAQsGFJluDFlikZLy"
+            target="_blank"
+            class="btn-shimmer inline-flex items-center justify-center gap-4 bg-white text-brand-dark px-10 py-5 rounded-full text-xl font-bold hover:bg-gray-100 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_80px_rgba(255,255,255,0.6)] transform hover:-translate-y-2 w-full md:w-auto relative overflow-hidden group"
+          >
+            <i
+              class="fa-brands fa-whatsapp text-3xl text-green-600 group-hover:scale-110 transition-transform"
+            ></i>
+            ACESSAR GRUPO DE VENDAS
+          </a>
+          <p class="mt-4 text-xs text-gray-500">
+            Acesso gratuito. Vagas limitadas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="border-t border-white/10 bg-black py-12 relative z-20">
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6"
+      >
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-bolt text-brand-purple animate-pulse"></i>
+          <span class="font-display font-bold text-lg"
+            >PRYZE<span class="text-brand-purple">GEAR</span></span
+          >
+        </div>
+
+        <div class="flex gap-6 text-gray-500 text-sm">
+          <a
+            href="https://www.instagram.com/pryzegear"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-white hover:text-brand-purple transition-colors"
+            >Instagram</a
+          >
+          <a
+            href="https://x.com/pryzegear?s=11"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-white hover:text-brand-purple transition-colors"
+            >X (Twitter)</a
+          >
+          <a
+            href="https://www.tiktok.com/@pryzegear?_r=1&_t=ZS-936AnUFaa0q"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-white hover:text-brand-purple transition-colors"
+            >TikTok</a
+          >
+          <a
+            href="#"
+            class="hover:text-white hover:text-brand-purple transition-colors"
+            >Termos</a
+          >
+          <a
+            href="#"
+            class="hover:text-white hover:text-brand-purple transition-colors"
+            >Contato</a
+          >
+        </div>
+
+        <p class="text-gray-600 text-xs">
+          © 2026 PryzeGear. Todos os direitos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const spotlight = document.documentElement;
+      document.addEventListener("mousemove", (e) => {
+        spotlight.style.setProperty("--mouse-x", `${e.clientX}px`);
+        spotlight.style.setProperty("--mouse-y", `${e.clientY}px`);
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const observerOptions = {
+          threshold: 0.15,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        const revealElements = document.querySelectorAll(".reveal");
+        revealElements.forEach((el) => observer.observe(el));
+      });
+
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-menu");
+        if (menu.classList.contains("translate-x-full")) {
+          menu.classList.remove("translate-x-full");
+        } else {
+          menu.classList.add("translate-x-full");
+        }
+      }
+
+      window.addEventListener("scroll", () => {
+        const nav = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          nav.classList.add(
+            "bg-brand-dark/95",
+            "backdrop-blur-xl",
+            "border-b",
+            "border-white/5",
+            "shadow-lg"
+          );
+          nav.classList.remove("border-b-0");
+        } else {
+          nav.classList.remove(
+            "bg-brand-dark/95",
+            "backdrop-blur-xl",
+            "border-b",
+            "border-white/5",
+            "shadow-lg"
+          );
+          nav.classList.add("border-b-0");
+        }
+      });
+
+      // Drag horizontal para logos
+      const marquee = document.getElementById("marquee");
+      const container = document.getElementById("logos-container");
+      let isDragging = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      marquee.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+        marquee.classList.add("paused");
+        marquee.style.cursor = "grabbing";
+      });
+
+      marquee.addEventListener("mouseleave", () => {
+        if (isDragging) {
+          isDragging = false;
+          marquee.classList.remove("paused");
+          marquee.style.cursor = "grab";
+        }
+      });
+
+      marquee.addEventListener("mouseup", () => {
+        if (isDragging) {
+          isDragging = false;
+          marquee.classList.remove("paused");
+          marquee.style.cursor = "grab";
+        }
+      });
+
+      marquee.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 1;
+        container.scrollLeft = scrollLeft - walk;
+      });
+
+      // Touch support para mobile
+      marquee.addEventListener("touchstart", (e) => {
+        isDragging = true;
+        startX = e.touches[0].pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+        marquee.classList.add("paused");
+      });
+
+      marquee.addEventListener("touchend", () => {
+        isDragging = false;
+        marquee.classList.remove("paused");
+      });
+
+      marquee.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+        const x = e.touches[0].pageX - container.offsetLeft;
+        const walk = (x - startX) * 1;
+        container.scrollLeft = scrollLeft - walk;
+      });
+
+      // Adicionar overflow-x e transition ao container
+      container.style.overflowX = "auto";
+      container.style.scrollBehavior = "smooth";
+    </script>
+  </body>
+</html>
